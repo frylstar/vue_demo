@@ -9,6 +9,7 @@
   <style>
     .card {
       width: 200px;
+      height: 100px;
       padding: 10px;
       margin: 5px;
       background-color: #ccc;
@@ -18,7 +19,8 @@
 
 <body>
   <div id="app">
-    <div v-pin="card1.pinned" class="card">
+    <!-- 自定义指令  -->
+    <div v-pin:true.bottom.right="card1.pinned" class="card">
       <button @click="card1.pinned = !card1.pinned">钉住/取消</button>
       Lorem ipsum dolor sit amet, consectetur
     </div>
@@ -26,6 +28,7 @@
       <a href="#" @click="card2.pinned = !card2.pinned">钉住/取消</a>
       Lorem ipsum dolor sit amet, consectetur
     </div>
+    <!-- test ignore -->
     <div>
         Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur
         Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur 

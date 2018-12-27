@@ -8,12 +8,28 @@
 
 Vue.directive('pin', function(el, binding) {
 
-  var pinned = binding.value; //即自定义指令里的值，这里是true or false
+  var pinned = binding.value; //即自定义指令绑定值，这里是true or false
+  var  position = binding.modifiers; // 一个包含修饰符的对象 ，此处为 {bottom: true, right: true }
+  var warning = binding.arg; // 传给指令的参数，例如 v-my-directive:foo 中，参数为 "foo"
+  console.log('position:', position)
+
   console.log('pinned', pinned);
   if(pinned) {
     el.style.position = 'fixed';
-    el.style.top = '10px';
-    el.style.left = '10px;'
+
+    // 设置bottom, right为10px
+    for (var key in position) {
+      if(position[key]) {
+        el.style[key] = '10px';
+      }
+    }
+    // 传给指令的参数
+    if(warning === 'true') {
+      el.style.background = 'yellow';
+    }
+
+    // el.style.top = '10px';
+    // el.style.left = '10px;'
   } else {
     el.style.position = 'static';
   }
